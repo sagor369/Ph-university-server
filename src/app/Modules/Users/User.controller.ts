@@ -1,24 +1,21 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import { UserService } from "./User.services";
+import { AsyncCatch, SendRespons } from "../../utils/AsycnCatch";
+import httpStatus from "http-status";
 
-const creatStudent = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const studentData = req.body;
-  const password = "";
-  try {
+const creatStudent = AsyncCatch(
+  async (req: Request, res: Response) => {
+    const studentData = req.body;
+    const password = "";
     const result = await UserService.createStudentDB(password, studentData);
-    res.json({
-      seccess: true,
+    SendRespons(res, {
+      success: true,
+      statusCode: httpStatus.OK,
       message: "user create successfuly ",
       data: result,
     });
-  } catch (error) {
-    next(error);
   }
-};
+);
 
 export const UserController = {
   creatStudent,

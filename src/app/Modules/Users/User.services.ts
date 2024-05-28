@@ -11,11 +11,11 @@ const createStudentDB = async (password: string, StudentData: TStudent) => {
   } else {
     user.password = password;
   }
-  user.id = "202405250010";
+ 
+  const oldId = await UserModel.findOne({role:"student"},{});
+
+  user.id = "12000120"
   user.role = "student";
-  //   const createStudent = await Students.create(StudentData)
-  //   console.log(createStudent)
-  //     return createStudent
 
   const NewUser = await UserModel.create(user);
   if (Object.keys(NewUser).length) {

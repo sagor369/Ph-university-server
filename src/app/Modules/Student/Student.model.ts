@@ -15,6 +15,7 @@ const StudentSchema = new Schema<TStudent>({
   profileImage: { type: String, required: true },
   gender: { enum: ["male", "female", "other"] },
   guardian: { type: String, required: true },
+  admissionSemester: { type: Schema.Types.ObjectId, ref: "AcademicModel"  },
   age: { type: Number, required: true },
   contactNo: { type: String, required: true },
   dateOfBirth: { type: Date },
