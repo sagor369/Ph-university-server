@@ -6,7 +6,6 @@ export const validateData = z.object({
     AcademicName: z.enum([...AcademicName] as [string, ...string[]]),
     AcademicCode: z.enum([...AcademicCode] as [string, ...string[]]),
     year: z.string(),
-    studentId: z.string(),
     startMonth: z.enum([...month] as [string, ...string[]]),
     endMonth: z.enum([...month] as [string, ...string[]]),
   }),

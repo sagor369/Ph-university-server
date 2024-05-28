@@ -7,7 +7,7 @@ const UserSchema = new Schema<TUsers>(
   {
     password: { type: String, required: true },
     needdedPassword: { type: Boolean, default: true },
-    id: { type: String, required: true },
+    id: { type: String, required: true , unique: true},
     isDelete: { type: Boolean, default: false },
     role: { type: String, enum: ["student", "faculty", "admin"] },
     status: {
@@ -23,7 +23,7 @@ const UserSchema = new Schema<TUsers>(
 
 UserSchema.pre("save", async function (next) {
   const user = this;
-  user.password = await bcrypt.hash(user.password, 12);
+  user.password = await bcrypt.hash(user.password, Number(config.bc_hash));
   next();
 });
 

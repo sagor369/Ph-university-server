@@ -36,7 +36,7 @@ const getSingleAcademicSemister =AsyncCatch(async(req:Request, res:Response)=>{
 
 
 const updateAcademicSemister = AsyncCatch(async(req:Request, res:Response)=>{
-
+    console.log(req.body, "hello")
     const result = await AcademicSemisterServices.updateAcademicSemister(req.params.id,req.body)
 
     SendRespons(res, {
