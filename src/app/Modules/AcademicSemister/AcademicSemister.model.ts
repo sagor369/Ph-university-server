@@ -1,5 +1,7 @@
 import { model, Schema } from "mongoose";
 import { AcademicCode, AcademicName, month } from "./conastan";
+import { AppError } from "../../Middlewares/CustomError";
+import httpStatus from "http-status";
 
 const AcademincSchema = new Schema({
     AcademicName: {
@@ -37,7 +39,7 @@ AcademincSchema.pre("save", async function (next){
         year : this.year
     })
     if(existingdata){
-        throw new Error("semester in alredy exist")
+        throw new AppError(httpStatus.NOT_FOUND, "semester in alredy exist")
     }
     next()
 })

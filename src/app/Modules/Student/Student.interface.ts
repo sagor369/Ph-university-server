@@ -15,6 +15,7 @@ export type TStudent = {
   dateOfBirth: Date;
   email: string;
   admissionSemester: Types.ObjectId;
+  academicDepartment: Types.ObjectId;
   contactNo: string;
   emergencyContactNo: string;
   presentAddress: string;

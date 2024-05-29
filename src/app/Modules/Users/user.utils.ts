@@ -15,11 +15,20 @@ export const findStudentId = async () => {
       createdAt: -1,
     })
     .lean();
-  return studentsId?.id ? studentsId?.id.substring(6) : undefined;
+  return studentsId?.id ? studentsId?.id : undefined;
 };
 
-export const genaretadId = async (payload: TAcademic) => {
-  const currentId = (await findStudentId()) || (0).toString();
+export const genaretadId = async (payload:TAcademic) => {
+  let currentId:string  = (0).toString();
+  const lastId = await findStudentId()
+    const lastyear = lastId?.substring(0, 4) 
+    const lastSemisterCode  = lastId?.substring(4, 6)
+    const currentYear = payload.year
+    const currentSemisterCode = payload.AcademicCode
+    if(lastyear === currentYear && lastSemisterCode === currentSemisterCode){
+        currentId = lastId?.substring(6) as string
+    }
+
   let increment = (Number(currentId) + 1).toString().padStart(4, "0");
   increment = `${payload.year}${payload.AcademicCode}${increment}`;
   return increment;
