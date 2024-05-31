@@ -12,11 +12,39 @@ const getStudent = AsyncCatch(async(req:Request, res:Response)=>{
       data: result,
     })
 })
-const getIdByStudent = (req: Request, res: Response) => {};
+const getIdByStudent = AsyncCatch(async(req:Request, res:Response)=>{
+  const {studentId} = req.params
+  const result = await StudentServices.singlestudentgtInToDB(studentId)
+  SendRespons(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Student fatch successfuly ",
+      data: result,
+    })
+})
 
-const updateStudent = (req: Request, res: Response) => {};
+const updateStudent = AsyncCatch(async(req:Request, res:Response)=>{
+  const {studentId} = req.params
 
-const deleteStudent = (req: Request, res: Response) => {};
+  const result = await StudentServices.updateStudentInToDb(studentId,req.body )
+  SendRespons(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Student fatch successfuly ",
+      data: result,
+    })
+})
+
+const deleteStudent = AsyncCatch(async(req:Request, res:Response)=>{
+  const {studentId} = req.params
+  const result = await StudentServices.deleteStudentInToDb(studentId)
+  SendRespons(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Student fatch successfuly ",
+      data: result,
+    })
+})
 
 export const StudentController = {
   getStudent,

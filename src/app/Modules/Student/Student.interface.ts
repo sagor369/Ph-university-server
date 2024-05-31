@@ -23,4 +23,5 @@ export type TStudent = {
   guardian: string;
   localGuardian: string;
   profileImage: string;
+  isDelete: boolean;
 };

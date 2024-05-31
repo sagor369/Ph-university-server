@@ -5,7 +5,7 @@ const StudentSchema = new Schema<TStudent>({
   name: {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    middelName: { type: String },
+    middelName: { type: String }, 
   },
   email: { 
     type: String, 
@@ -51,6 +51,11 @@ const StudentSchema = new Schema<TStudent>({
   age: { 
     type: Number, 
     required: true 
+  },
+  isDelete:{
+    type: Boolean,
+    default:false
+
   },
   contactNo: {
      type: String, 

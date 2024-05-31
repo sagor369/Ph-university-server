@@ -2,9 +2,9 @@ import express from "express";
 import { StudentController } from "./Student.controller";
 const router = express.Router();
 
-router.get("/:studentId");
+router.get("/:studentId", StudentController.getIdByStudent);
 router.get("/", StudentController.getStudent);
-router.put("/:studentId");
-router.delete("/:studentId");
+router.patch("/:studentId",StudentController.updateStudent);
+router.delete("/:studentId", StudentController.deleteStudent);
 
 export const StudentRoter = router;
