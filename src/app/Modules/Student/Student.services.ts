@@ -6,6 +6,14 @@ const studentgtInToDB = async() =>{
     return result
 }
 
+const updateStudentInToDb = async ( studentId:string, payload: Partial<TStudent>) =>{
+
+const result =await Students.findOneAndUpdate({id: studentId}, payload, {new:true})
+return result
+}
+
 export const  StudentServices = {
-    studentgtInToDB
+    studentgtInToDB,
+    updateStudentInToDb,
+
 }

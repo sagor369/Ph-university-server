@@ -18,13 +18,13 @@ export const findStudentId = async () => {
   return studentsId?.id ? studentsId?.id : undefined;
 };
 
-export const genaretadId = async (payload:TAcademic) => {
+export const genaretadId = async (payload:any) => {
   let currentId:string  = (0).toString();
   const lastId = await findStudentId()
     const lastyear = lastId?.substring(0, 4) 
     const lastSemisterCode  = lastId?.substring(4, 6)
-    const currentYear = payload.year
-    const currentSemisterCode = payload.AcademicCode
+    const currentYear = payload?.year
+    const currentSemisterCode = payload?.AcademicCode
     if(lastyear === currentYear && lastSemisterCode === currentSemisterCode){
         currentId = lastId?.substring(6) as string
     }
