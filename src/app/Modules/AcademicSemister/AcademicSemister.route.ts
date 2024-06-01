@@ -5,7 +5,9 @@ import { updateValidataData, validateData } from "./AcademicValidation";
 
 const router = Router()
 
-router.post("/create-semister",ValidateRequest(validateData), AcademicSemister.createAcademicSemister)
+router.post("/create-semister",
+ValidateRequest(validateData), 
+AcademicSemister.createAcademicSemister)
 router.get("/", AcademicSemister.getAcademicSemister)
 router.get("/id", AcademicSemister.getSingleAcademicSemister)
 router.patch("/:id", ValidateRequest(updateValidataData), AcademicSemister.updateAcademicSemister )

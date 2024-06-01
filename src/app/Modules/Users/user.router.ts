@@ -5,7 +5,9 @@ import { ValidateRequest } from "../../Middlewares/dataValidation";
 
 const router = express.Router();
 
-router.post("/create-student+",ValidateRequest(StudentValidat), UserController.creatStudent);
+router.post("/create-student",
+ValidateRequest(StudentValidat),
+ UserController.creatStudent );
 router.get("/:userId");
 router.get("/");
 router.delete("/:usertId");

@@ -4,41 +4,41 @@ import { TStudent } from "./Student.interface";
 const StudentSchema = new Schema<TStudent>({
   name: {
     firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
+    lastName: { type: String, required:true },
     middelName: { type: String }, 
   },
   email: { 
     type: String, 
-    required: true , 
-    unique:true 
+    required:true
   },
   id: {
      type: String,
-     required: true, 
-     unique:true 
+     unique:true ,
+     required:true
     },
   user: {
      type: Schema.Types.ObjectId, 
-     required: true 
+     required: true
+    
     },
   emergencyContactNo: {
      type: String,
-      required: true 
+     required:true
     },
   permanentAddress: {
      type: String, 
-     required: true 
+     required:true
     },
   profileImage: {
      type: String, 
-     required: true 
     },
   gender: {
-     enum: ["male", "female", "other"] 
+     enum: ["male", "female", "other"]
+     
     },
   guardian: {
      type: String, 
-     required: true 
+     required:true
     },
   admissionSemester: {
      type: Schema.Types.ObjectId, 
@@ -49,8 +49,8 @@ const StudentSchema = new Schema<TStudent>({
     ref: "academicDepertment"
   },
   age: { 
-    type: Number, 
-    required: true 
+    type: Number,
+    required:true 
   },
   isDelete:{
     type: Boolean,
@@ -58,19 +58,20 @@ const StudentSchema = new Schema<TStudent>({
 
   },
   contactNo: {
-     type: String, 
+     type: String,
      required: true 
     },
-  dateOfBirth: { type: Date },
+  dateOfBirth: { type: String },
   localGuardian: { type: String },
   presentAddress: { type: String },
 });
 
 
-StudentSchema.pre("save", async function (doc, next) {
- console.log(doc)
+// StudentSchema.pre("save", async function (doc, next) {
+//  console.log(doc)
+
   
   
-})
+// })
 
 export const Students = model("student", StudentSchema);

@@ -5,7 +5,9 @@ import { ValidateDepertment } from "./depertment.validation";
 
 const router = Router();
 
-router.post("/create-depertment",ValidateRequest(ValidateDepertment) ,depertmentController.createDepertment);
+router.post("/create-depertment",
+// ValidateRequest(ValidateDepertment) ,
+depertmentController.createDepertment);
 router.get("/:depertmentId", depertmentController.getsingleDepertment)
 router.get("/", depertmentController.getDepertment)
 router.patch("/:depertmentId", depertmentController.updateDepertment)

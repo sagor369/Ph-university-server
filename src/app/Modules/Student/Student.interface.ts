@@ -12,7 +12,7 @@ export type TStudent = {
   age: number;
   user: Types.ObjectId;
   gender: "male" | "female" | "other";
-  dateOfBirth: Date;
+  dateOfBirth: string;
   email: string;
   admissionSemester: Types.ObjectId;
   academicDepartment: Types.ObjectId;
