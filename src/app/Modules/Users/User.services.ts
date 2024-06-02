@@ -15,7 +15,7 @@ const createStudentDB = async (password: string, StudentData: TStudent) => {
   user.password = password || (config.default_password as string);
 
   const admissionSemester = await AcademicModel.findOne({
-    _id: StudentData.admissionSemester,
+    _id: StudentData?.admissionSemester,
   });
   user.id = await genaretadId(admissionSemester);
   user.role = "student";

@@ -4,7 +4,8 @@ import { StudentServices } from "./Student.services";
 import httpStatus from "http-status";
 
 const getStudent = AsyncCatch(async(req:Request, res:Response)=>{
-  const result = await StudentServices.studentgtInToDB()
+  const query = req?.query
+  const result = await StudentServices.studentgtInToDB(query)
   SendRespons(res, {
       success: true,
       statusCode: httpStatus.OK,

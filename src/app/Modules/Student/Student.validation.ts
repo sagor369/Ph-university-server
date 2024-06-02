@@ -19,5 +19,8 @@ export const StudentValidat = z.object({
     guardian: z.string(),
     localGuardian: z.string(),
     profileImage: z.string(),
+    academicDepartment:z.string(),
+    admissionSemester: z.string()
+
   })
 });
