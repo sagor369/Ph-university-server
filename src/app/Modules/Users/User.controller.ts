@@ -11,7 +11,33 @@ const creatStudent = AsyncCatch(
     SendRespons(res, {
       success: true,
       statusCode: httpStatus.OK,
-      message: "user create successfuly ",
+      message: "student create successfuly ",
+      data: result,
+    });
+  }
+);
+const creatFaculty = AsyncCatch(
+  async (req: Request, res: Response) => {
+    const facultyData = req.body;
+    const password = "";
+    const result = await UserService.createFacultyInToDb(password, facultyData);
+    SendRespons(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "faculty create successfuly ",
+      data: result,
+    });
+  }
+);
+const creatAdmin = AsyncCatch(
+  async (req: Request, res: Response) => {
+    const adminData = req.body;
+    const password = "";
+    const result = await UserService.createAdminInToDb(password, adminData);
+    SendRespons(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "faculty create successfuly ",
       data: result,
     });
   }
@@ -19,4 +45,6 @@ const creatStudent = AsyncCatch(
 
 export const UserController = {
   creatStudent,
+  creatFaculty,
+  creatAdmin
 };

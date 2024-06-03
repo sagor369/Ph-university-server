@@ -3,8 +3,8 @@ import { TStudent } from "./Student.interface";
 
 const StudentSchema = new Schema<TStudent>({
   name: {
-    firstName: { type: String, required: true },
-    lastName: { type: String, required:true },
+    firstName: { type: String },
+    lastName: { type: String},
     middelName: { type: String }, 
   },
   email: { 
