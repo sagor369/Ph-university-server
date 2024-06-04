@@ -9,7 +9,7 @@ const createCourse = AsyncCatch(async(req:Request, res:Response)=>{
     SendRespons(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Student fatch successfuly ",
+        message: "create course is successfuly ",
         data: result,
       })
   })
@@ -18,7 +18,7 @@ const getCourse = AsyncCatch(async(req:Request, res:Response)=>{
     SendRespons(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Student fatch successfuly ",
+        message: "Course fatch successfuly ",
         data: result,
       })
   })
@@ -28,29 +28,40 @@ const getSingleCourse = AsyncCatch(async(req:Request, res:Response)=>{
     SendRespons(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Student fatch successfuly ",
+        message: "Course fatch successfuly ",
         data: result,
       })
   })
-const deleetCourse = AsyncCatch(async(req:Request, res:Response)=>{
+const deleteCourse = AsyncCatch(async(req:Request, res:Response)=>{
    const id = req?.params?.id
     const result = await CourseServices.deleteCourseInToDb(id)
     SendRespons(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Student fatch successfuly ",
+        message: "Course delete successfuly ",
         data: result,
       })
   })
 const updateCourse = AsyncCatch(async(req:Request, res:Response)=>{
    const id = req?.params.id
-    const result = await CourseServices.updateCourseInToDb(id)
+    const result = await CourseServices.updateCourseInToDb(id, req.body)
     SendRespons(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Student fatch successfuly ",
+        message: "Course update successfuly ",
         data: result,
       })
+  })
+
+  const AssignCourseFaculty = AsyncCatch(async(req:Request, res:Response)=>{
+    const data = req.body 
+    const result = await CourseServices.courseAssignInToDb(req.params.courseId, data)
+    SendRespons(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Course update successfuly ",
+      data: result,
+    })
   })
 
   export const CourseController = {
@@ -58,5 +69,6 @@ const updateCourse = AsyncCatch(async(req:Request, res:Response)=>{
     getCourse,
     getSingleCourse,
     updateCourse,
-    deleetCourse
+    deleteCourse,
+    AssignCourseFaculty
   }
