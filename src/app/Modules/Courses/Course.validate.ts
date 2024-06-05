@@ -26,3 +26,9 @@ export const updateCourseValidate = z.object({
     preRequisteCourses: z.array(updatepreRequisteCoursesValidation).optional(),
   }),
 });
+
+export const courseAddToFaculty = z.object({
+data: z.object({
+  faculties: z.array(z.string())
+})  
+});

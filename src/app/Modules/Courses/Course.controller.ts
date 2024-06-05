@@ -54,12 +54,24 @@ const updateCourse = AsyncCatch(async(req:Request, res:Response)=>{
   })
 
   const AssignCourseFaculty = AsyncCatch(async(req:Request, res:Response)=>{
-    const data = req.body 
-    const result = await CourseServices.courseAssignInToDb(req.params.courseId, data)
+    const {faculties}  = req.body 
+    const {courseId} = req.params
+    const result = await CourseServices.courseAssignInToDb(courseId, faculties)
     SendRespons(res, {
       success: true,
       statusCode: httpStatus.OK,
-      message: "Course update successfuly ",
+      message: "Create Faculty in course successfuly ",
+      data: result,
+    })
+  })
+  const DeleteCourseFaculty = AsyncCatch(async(req:Request, res:Response)=>{
+    const {faculties}  = req.body 
+    const {courseId} = req.params
+    const result = await CourseServices.updateCourseAssignInToDb(courseId, faculties)
+    SendRespons(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Delete Faculty from course successfuly ",
       data: result,
     })
   })
@@ -70,5 +82,6 @@ const updateCourse = AsyncCatch(async(req:Request, res:Response)=>{
     getSingleCourse,
     updateCourse,
     deleteCourse,
-    AssignCourseFaculty
+    AssignCourseFaculty,
+    DeleteCourseFaculty
   }
